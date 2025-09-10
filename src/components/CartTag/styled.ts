@@ -18,7 +18,7 @@ export const CartTagButton = styled.button`
         position: absolute;
         top: -8px;
         right: -8px;
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         width: 20px;
