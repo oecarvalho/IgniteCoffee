@@ -1,7 +1,9 @@
 
 import Logo from '../assets/img/Logo.svg'
+import { ButtonCart } from './ButtonCart'
 import { ButtonLabel } from './ButtonLabel'
 import { ButtonRemove } from './ButtonRemove'
+import { CartTag } from './CartTag'
 
 export function Header(){
     return(
@@ -13,6 +15,8 @@ export function Header(){
                 <button>Carrinho</button>
                 <ButtonLabel/>
                 <ButtonRemove/>
+                <ButtonCart/>
+                <CartTag/>
             </div>
         </header>
     )

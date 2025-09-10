@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const BtnRemove = styled.button`
+    width: 100%;
+    max-width: 92px;
     display: flex;
     justify-content: center;
     gap: 4px;
