@@ -4,6 +4,7 @@ import MainBg from '../../assets/img/coffe-delivery-bg.png'
 import { ListBeneficts } from "../../components/Beneficts";
 
 import BackgroundImg from '../../assets/img/Background.png'
+import { Card } from "../../components/Card";
 
 
 export function Home(){
@@ -20,6 +21,9 @@ export function Home(){
 
                 <img src={MainBg} alt="" />
             </MainContent>
+
+            <Card/>
+
         </MainContainer>
     )
 }
