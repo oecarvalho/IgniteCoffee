@@ -15,15 +15,14 @@ export const CartTagButton = styled.button`
     padding: .5rem;
 
     span{
+        display: none !important;
         position: absolute;
         top: -8px;
         right: -8px;
-        display: none;
         align-items: center;
         justify-content: center;
         width: 20px;
         height: 20px;
-
         background-color: ${props => props.theme['yellow-dark']};
         border-radius: 100%;
         color: ${props => props.theme['white']};
