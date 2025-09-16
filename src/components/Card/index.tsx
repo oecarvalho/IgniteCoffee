@@ -1,6 +1,6 @@
 import { ButtonCart } from "../ButtonCart";
 import { Quantify } from "../Quantify";
-import { CardContainer, CoffeeActions, CoffeeImage, CoffeePrice, CoffeeSubtitle, CoffeeTag, CoffeeTitle } from "./style";
+import { Actions, CardContainer, CoffeeActions, CoffeeImage, CoffeeInformation, CoffeePrice, CoffeeSubtitle, CoffeeTag, CoffeeTitle } from "./style";
 
 import CoffeeImg from '../../assets/img/Type=Americano.png'
 
@@ -11,14 +11,18 @@ export function Card(){
             <CoffeeTag>
                 TRADICIONAL
             </CoffeeTag>
-            <CoffeeTitle>Café Tradicional</CoffeeTitle>
-            <CoffeeSubtitle>Venha Experimentar essa experiencia</CoffeeSubtitle>
+            <CoffeeInformation>
+                <CoffeeTitle>Café Tradicional</CoffeeTitle>
+                <CoffeeSubtitle>O tradicional café feito com água quente e grãos moídos</CoffeeSubtitle>
+            </CoffeeInformation>
             <CoffeeActions>
                 <CoffeePrice>
-                    <span>R$ 2,00</span>
+                    R$ <span>9,90</span>
                 </CoffeePrice>
-                <Quantify/>
-                <ButtonCart/>
+                <Actions>
+                    <Quantify/>
+                    <ButtonCart/>
+                </Actions>
             </CoffeeActions>
         </CardContainer>
     )

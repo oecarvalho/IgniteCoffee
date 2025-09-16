@@ -18,7 +18,6 @@ export const BGImage = styled.img`
     z-index: -1;
 
 `
-
 export const MainContent = styled.main`
 
     display: flex;
@@ -45,13 +44,24 @@ export const MainContent = styled.main`
         }
     }
 `
-
-
-
 export const IntroContainer = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   padding: 5.75rem 0;
+`
+export const CardSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    gap: 54px;
+    overflow-x: hidden;
+    margin-bottom: 10rem;
+`
+
+export const CardsSection = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 32px 40px;
+
 `

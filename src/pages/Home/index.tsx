@@ -1,4 +1,4 @@
-import { BGImage, MainContainer, MainContent } from "./styled";
+import { BGImage, CardSection, CardsSection, MainContainer, MainContent } from "./styled";
 
 import MainBg from '../../assets/img/coffe-delivery-bg.png'
 import { ListBeneficts } from "../../components/Beneficts";
@@ -21,8 +21,26 @@ export function Home(){
 
                 <img src={MainBg} alt="" />
             </MainContent>
-
-            <Card/>
+            
+            <CardSection>
+                <h2>Nossos cafés</h2>
+                <CardsSection>
+                    <Card/>
+                    <Card/>
+                    <Card/>
+                    <Card/>
+                    <Card/>
+                    <Card/>
+                    <Card/>
+                    <Card/>
+                    <Card/>
+                    <Card/>
+                    <Card/>
+                    <Card/>
+                    <Card/>
+                    <Card/>
+                </CardsSection>
+            </CardSection>
 
         </MainContainer>
     )
