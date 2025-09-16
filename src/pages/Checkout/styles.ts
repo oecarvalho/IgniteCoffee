@@ -96,18 +96,29 @@ export const CoffeeSelectedContainer = styled.div`
 
 export const CoffeeSelected = styled.div`
     background-color: ${props =>props.theme['base-card']};
-    border-radius: 6px;
+    border-radius: 6px 44px 6px 44px;
     padding: 40px;
 `
 
-export const CoffeeSelectedCards = styled.div`
-    
-`
-
-export const CardCoffeeSelected = styled.div`
-
-`
 
 export const CoffeeInfoPayment = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+`
 
+export const CoffeeInfo = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span{
+        font-size: 14px;
+        color: ${props => props.theme['base-text']};
+    }
+
+    p{
+        font-size: 16px;
+        color: ${props => props.theme['base-text']};
+    }
 `

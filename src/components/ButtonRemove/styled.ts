@@ -2,16 +2,15 @@ import styled from "styled-components";
 
 export const BtnRemove = styled.button`
     width: 100%;
-    max-width: 92px;
     display: flex;
     justify-content: center;
-    gap: 4px;
+    align-items: center;
     padding: .375rem .5rem;
     background: ${props => props.theme['base-button']};
     border: none;
     border-radius: 6px;
     color: ${props => props.theme['base-text']};
-
+    gap: 4px;
     font-weight: 500;
     font-size: 12px;
     line-height: 160%;

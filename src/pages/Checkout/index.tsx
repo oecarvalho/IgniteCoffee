@@ -1,5 +1,5 @@
 import { CurrencyDollar, MapPinLine } from "phosphor-react";
-import { CheckoutAdressForm, CheckoutContainer, CheckoutForm, CheckoutFormContainer, CheckoutInfo, CheckoutMethod, CheckoutPayment, CoffeeInfoPayment, CoffeeSelected, CoffeeSelectedContainer, FormItem, Input } from "./styles";
+import { CheckoutAdressForm, CheckoutContainer, CheckoutForm, CheckoutFormContainer, CheckoutInfo, CheckoutMethod, CheckoutPayment, CoffeeInfo, CoffeeInfoPayment, CoffeeSelected, CoffeeSelectedContainer, FormItem, Input } from "./styles";
 import { SelectFormPayment } from "../../components/Select";
 import { CardCart } from "./CardCart";
 import { ButtonLabel } from "../../components/ButtonLabel";
@@ -70,25 +70,27 @@ export function Checkout() {
 
             <CoffeeSelectedContainer>
                 <h3>Cafés selecionados</h3>
-                
+
                 <CoffeeSelected>
+                    <CardCart/>
+                    <CardCart/>
                     <CardCart/>
 
                     <CoffeeInfoPayment>
-                        <div>
+                        <CoffeeInfo>
                             <span>Total de Itens</span>
                             <p>R$ 29,70</p>
-                        </div>
+                        </CoffeeInfo>
 
-                        <div>
+                        <CoffeeInfo>
                             <span>Entrega</span>
                             <p>R$ 3,50</p>
-                        </div>
+                        </CoffeeInfo>
 
-                        <div>
+                        <CoffeeInfo>
                             <h2>Total</h2>
                             <h2>R$ 33,20</h2>
-                        </div>
+                        </CoffeeInfo>
 
                         <ButtonLabel/>
                     </CoffeeInfoPayment>

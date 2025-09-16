@@ -2,23 +2,24 @@
 import imgCoffee from '../../../assets/img/Type=Americano.png'
 import { ButtonRemove } from '../../../components/ButtonRemove'
 import { Quantify } from '../../../components/Quantify'
+import { CardCartActions, CardCartContainer, CardCartInfo, CardCartInfos, CardCartPrice } from './styled'
+
 
 export function CardCart(){
     return(
-        <div>
-            <img src={imgCoffee} alt="" />
+        <CardCartContainer>
+            <CardCartInfos>
+                <img src={imgCoffee} alt="" />
 
-            <div>
-                <div>
+                <CardCartInfo>
                     <p>Expresso Tradicional</p>
-                    <span>R$ 9,90</span>
-                </div>
-                
-                <div>
-                    <Quantify/>
-                    <ButtonRemove/>
-                </div>
-            </div>
-        </div>
+                    <CardCartActions>
+                        <Quantify/>
+                        <ButtonRemove/>
+                    </CardCartActions>
+                </CardCartInfo>
+            </CardCartInfos>
+            <CardCartPrice>R$ 9,90</CardCartPrice>
+        </CardCartContainer>
     )
 }
