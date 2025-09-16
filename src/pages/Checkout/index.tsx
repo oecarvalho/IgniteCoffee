@@ -1,8 +1,7 @@
 import { CurrencyDollar, MapPinLine } from "phosphor-react";
-import { CheckoutContainer, CheckoutForm, CheckoutFormContainer, CheckoutInfo, CheckoutMethod, CheckoutPayment, CoffeeInfoPayment, CoffeeSelected, CoffeeSelectedContainer } from "./styles";
+import { CheckoutAdressForm, CheckoutContainer, CheckoutForm, CheckoutFormContainer, CheckoutInfo, CheckoutMethod, CheckoutPayment, CoffeeInfoPayment, CoffeeSelected, CoffeeSelectedContainer, FormItem, Input } from "./styles";
 import { SelectFormPayment } from "../../components/Select";
 import { CardCart } from "./CardCart";
-import { ButtonCart } from "../../components/ButtonCart";
 import { ButtonLabel } from "../../components/ButtonLabel";
 
 
@@ -14,28 +13,49 @@ export function Checkout() {
 
                 <CheckoutForm>
                     <CheckoutInfo>
-                        <MapPinLine size={22} />
+                        <MapPinLine size={22} color="#C47F17" />
                         <div>
-                            <p>Endereço de Entrega</p>
+                            <span>Endereço de Entrega</span>
                             <p>Informe o endereço onde deseja receber seu pedido</p>
                         </div>
                     </CheckoutInfo>
 
-                    <form action="">
-                        <input type="number" placeholder="CEP" />
-                        <input type="text" placeholder="Rua" />
+                    <CheckoutAdressForm>
+                        <FormItem colSpan={4}>
+                            <Input type="text" placeholder="CEP" />
+                        </FormItem>
 
-                        <input type="number" placeholder="Número" />
-                        <input type="text" placeholder="Complemento" />
-                        <input type="text" placeholder="UF" />
-                    </form>
+                        <FormItem>
+                            <Input type="text" placeholder="Rua" />
+                        </FormItem>
+                        
+                        <FormItem colSpan={4}>
+                            <Input type="text" placeholder="Número" />
+                        </FormItem>
+                        
+                        <FormItem colSpan={8}>
+                            <Input type="text" placeholder="Complemento" />
+                        </FormItem>
+
+                        <FormItem colSpan={4}>
+                            <Input type="text" placeholder="Bairro" />
+                        </FormItem>
+
+                        <FormItem colSpan={6}>
+                            <Input type="text" placeholder="Cidade" />
+                        </FormItem>
+                        
+                        <FormItem colSpan={2}>
+                            <Input type="text" placeholder="UF" />
+                        </FormItem>
+                    </CheckoutAdressForm>
                 </CheckoutForm>
 
                 <CheckoutPayment>
                     <CheckoutInfo>
-                        <CurrencyDollar size={22} />
+                        <CurrencyDollar size={22} color='#8047F8'/>
                         <div>
-                            <p>Pagamento</p>
+                            <span>Pagamento</span>
                             <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
                         </div>
                     </CheckoutInfo>
@@ -50,28 +70,29 @@ export function Checkout() {
 
             <CoffeeSelectedContainer>
                 <h3>Cafés selecionados</h3>
+                
                 <CoffeeSelected>
                     <CardCart/>
+
+                    <CoffeeInfoPayment>
+                        <div>
+                            <span>Total de Itens</span>
+                            <p>R$ 29,70</p>
+                        </div>
+
+                        <div>
+                            <span>Entrega</span>
+                            <p>R$ 3,50</p>
+                        </div>
+
+                        <div>
+                            <h2>Total</h2>
+                            <h2>R$ 33,20</h2>
+                        </div>
+
+                        <ButtonLabel/>
+                    </CoffeeInfoPayment>
                 </CoffeeSelected>
-
-                <CoffeeInfoPayment>
-                    <div>
-                        <span>Total de Itens</span>
-                        <p>R$ 29,70</p>
-                    </div>
-
-                    <div>
-                        <span>Entrega</span>
-                        <p>R$ 3,50</p>
-                    </div>
-
-                    <div>
-                        <h2>Total</h2>
-                        <h2>R$ 33,20</h2>
-                    </div>
-
-                    <ButtonLabel/>
-                </CoffeeInfoPayment>
             </CoffeeSelectedContainer>
         </CheckoutContainer>
     )

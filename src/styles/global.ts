@@ -16,6 +16,9 @@ export const GlobalStyle = createGlobalStyle`
         background-color: ${props => props.theme['background']};
         color: ${props => props.theme['base-title']};
         -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+        font-family: "Roboto", sans-serif;
+        line-height: 130%;
     }
 
     h1, h2, h3{
@@ -28,11 +31,5 @@ export const GlobalStyle = createGlobalStyle`
         font-family: "Baloo 2", sans-serif;
         font-weight: 800;
         line-height: 130%;
-    }
-
-    body, input, text-area{
-        font-family: "Roboto", sans-serif;
-        line-height: 130%;
-        overflow-x: hidden;
     }
 `;
