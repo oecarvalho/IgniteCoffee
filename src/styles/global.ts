@@ -30,8 +30,9 @@ export const GlobalStyle = createGlobalStyle`
         line-height: 130%;
     }
 
-    body, input, text-area, button{
+    body, input, text-area{
         font-family: "Roboto", sans-serif;
         line-height: 130%;
+        overflow-x: hidden;
     }
 `;

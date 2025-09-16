@@ -55,7 +55,6 @@ export const CardSection = styled.section`
     display: flex;
     flex-direction: column;
     gap: 54px;
-    overflow-x: hidden;
     margin-bottom: 10rem;
 `
 
