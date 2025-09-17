@@ -7,6 +7,10 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
     // label: string
 }
 
+const TypePayment = [
+    
+]
+
 export function SelectFormPayment({isSelected, ...rest}: Props){
     return(
         <PaymentContainer data-state={isSelected}>

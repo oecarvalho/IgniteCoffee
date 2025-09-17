@@ -6,6 +6,7 @@ import { ListBeneficts } from "../../components/Beneficts";
 import BackgroundImg from '../../assets/img/Background.png'
 import { Card } from "../../components/Card";
 
+import {coffeeCatalog} from '../../catalog'
 
 export function Home(){
     return(
@@ -25,20 +26,9 @@ export function Home(){
             <CardSection>
                 <h2>Nossos cafés</h2>
                 <CardsSection>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
+                    {coffeeCatalog.map(item => (
+                        <Card key={item.id} {...item}/>
+                    ))}
                 </CardsSection>
             </CardSection>
 

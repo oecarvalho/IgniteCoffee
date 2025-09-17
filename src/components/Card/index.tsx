@@ -1,23 +1,35 @@
 import { ButtonCart } from "../ButtonCart";
 import { Quantify } from "../Quantify";
-import { Actions, CardContainer, CoffeeActions, CoffeeImage, CoffeeInformation, CoffeePrice, CoffeeSubtitle, CoffeeTag, CoffeeTitle } from "./style";
+import { Actions, CardContainer, CoffeeActions, CoffeeImage, CoffeeInformation, CoffeePrice, CoffeeSubtitle, CoffeeTag, CoffeeTags, CoffeeTitle } from "./style";
 
-import CoffeeImg from '../../assets/img/Type=Americano.png'
 
-export function Card(){
+
+export type CoffeeProps = {
+    id: number,
+    name: string,
+    description: string,
+    tags: string[],
+    price: number,
+    image: string
+    amount: number
+}
+
+export function Card(coffee: CoffeeProps){
     return (
         <CardContainer>
-            <CoffeeImage src={CoffeeImg} />
-            <CoffeeTag>
-                TRADICIONAL
-            </CoffeeTag>
+            <CoffeeImage src={coffee.image} />
+            <CoffeeTags>
+                {coffee.tags.map(tag => (
+                    <CoffeeTag key={tag}>{tag}</CoffeeTag>
+                ))}
+            </CoffeeTags>
             <CoffeeInformation>
-                <CoffeeTitle>Café Tradicional</CoffeeTitle>
-                <CoffeeSubtitle>O tradicional café feito com água quente e grãos moídos</CoffeeSubtitle>
+                <CoffeeTitle>{coffee.name}</CoffeeTitle>
+                <CoffeeSubtitle>{coffee.description}</CoffeeSubtitle>
             </CoffeeInformation>
             <CoffeeActions>
                 <CoffeePrice>
-                    R$ <span>9,90</span>
+                    R$ <span>{coffee.price.toFixed(2)}</span>
                 </CoffeePrice>
                 <Actions>
                     <Quantify/>

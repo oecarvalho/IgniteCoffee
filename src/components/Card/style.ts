@@ -16,6 +16,12 @@ export const CoffeeImage = styled.img`
     margin-bottom: .75rem;
 `
 
+export const CoffeeTags = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 4px;
+` 
+
 export const CoffeeTag = styled.span`
     background: ${props => props.theme['yellow-light']};
     color:  ${props => props.theme['yellow-dark']};
