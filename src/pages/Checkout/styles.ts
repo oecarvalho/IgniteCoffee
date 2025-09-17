@@ -4,8 +4,11 @@ import styled from "styled-components";
 export const CheckoutContainer = styled.section`
     margin-top: 40px;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
+    
+    form{
+        display: flex;
+        justify-content: space-between;
+    }
 `
 
 export const CheckoutFormContainer = styled.div`
