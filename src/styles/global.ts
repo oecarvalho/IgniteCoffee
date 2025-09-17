@@ -32,4 +32,11 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 800;
         line-height: 130%;
     }
+
+    button{
+        &:focus{
+            border: none;
+            box-shadow: none;
+        }
+    }
 `;

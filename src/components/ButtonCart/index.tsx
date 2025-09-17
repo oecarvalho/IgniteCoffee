@@ -1,9 +1,13 @@
 import { ShoppingCartSimple } from "phosphor-react";
 import { BtnCart } from "./styled";
 
-export function ButtonCart(){
+interface ButtonCartProps {
+    disabled: boolean
+}
+
+export function ButtonCart({disabled}: ButtonCartProps){
     return(
-        <BtnCart>
+        <BtnCart disabled={disabled} type="submit">
             <ShoppingCartSimple size={22} weight="fill"/>
         </BtnCart>
     )

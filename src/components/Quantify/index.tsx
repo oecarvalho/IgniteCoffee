@@ -1,15 +1,23 @@
 import { Minus, Plus } from "phosphor-react";
 import {QuantifyActions, QuantifyContainer} from './styled'
 
-export function Quantify(){
+
+
+interface QuantifyProps {
+    amount: number
+    handleIncrement: () => void;
+    handleDecrement: () => void;
+}
+
+export function Quantify({amount, handleIncrement, handleDecrement} : QuantifyProps){
+
     return(
         <QuantifyContainer>
             <QuantifyActions>
-                <Minus size={14} color="#8047F8"/>
-                <span>1</span>
-                <Plus size={14} color="#8047F8"/>
+                <button type="button" onClick={handleDecrement}><Minus size={14} color="#8047F8"/></button>
+                <span>{amount}</span>
+                <button type="button" onClick={handleIncrement}><Plus size={14} color="#8047F8"/></button>
             </QuantifyActions>
         </QuantifyContainer>
-
     )
 }

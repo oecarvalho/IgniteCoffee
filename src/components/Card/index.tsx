@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { ButtonCart } from "../ButtonCart";
 import { Quantify } from "../Quantify";
 import { Actions, CardContainer, CoffeeActions, CoffeeImage, CoffeeInformation, CoffeePrice, CoffeeSubtitle, CoffeeTag, CoffeeTags, CoffeeTitle } from "./style";
-
 
 
 export type CoffeeProps = {
@@ -14,7 +14,22 @@ export type CoffeeProps = {
     amount: number
 }
 
+const MIN_VALUE = 0;
+
 export function Card(coffee: CoffeeProps){
+
+    const [amount, setAmount] = useState(0)
+
+    function handleIncrement(){
+        const incrementedValue = amount + 1
+        setAmount(incrementedValue)
+    }
+
+    function handleDecrement(){
+        const decrementedValue = amount <= MIN_VALUE ? 0 : amount - 1
+        setAmount(decrementedValue)
+    }
+
     return (
         <CardContainer>
             <CoffeeImage src={coffee.image} />
@@ -32,8 +47,11 @@ export function Card(coffee: CoffeeProps){
                     R$ <span>{coffee.price.toFixed(2)}</span>
                 </CoffeePrice>
                 <Actions>
-                    <Quantify/>
-                    <ButtonCart/>
+                    <Quantify 
+                    amount={amount} 
+                    handleIncrement={handleIncrement} 
+                    handleDecrement={handleDecrement}/>
+                    <ButtonCart disabled={amount === 0}/>
                 </Actions>
             </CoffeeActions>
         </CardContainer>

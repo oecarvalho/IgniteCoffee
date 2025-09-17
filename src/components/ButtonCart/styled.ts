@@ -8,14 +8,16 @@ export const BtnCart = styled.button`
     width: 38px;
     height: 38px;
     
-    background-color: ${props => props.theme['purple-dark']};
+    background-color: ${props => props.theme['purple']};
     padding: .5rem;
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     
-    &:hover{
-        background-color: ${props => props.theme['purple']};
+    &:disabled{
+        background-color: ${props => props.theme['purple-dark']};
+        transition: .3s;
+        cursor: not-allowed;
     }
 `

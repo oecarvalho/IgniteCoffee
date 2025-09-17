@@ -17,4 +17,10 @@ export const QuantifyActions = styled.div`
         color: ${props => props.theme['base-title']};
         font-size: 1rem;
     }
+
+    button{
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
 `
