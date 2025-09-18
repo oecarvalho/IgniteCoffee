@@ -5,6 +5,8 @@ import { CartTag } from '../CartTag'
 import { HeaderContainer } from './styled'
 
 export function Header(){
+
+
     return(
         <HeaderContainer>
             <img src={Logo} alt="" />

@@ -2,32 +2,31 @@ import { useState } from "react";
 import { ButtonCart } from "../ButtonCart";
 import { Quantify } from "../Quantify";
 import { Actions, CardContainer, CoffeeActions, CoffeeImage, CoffeeInformation, CoffeePrice, CoffeeSubtitle, CoffeeTag, CoffeeTags, CoffeeTitle } from "./style";
+import { useCart, type CoffeeProps } from "../../contexts/CartContext";
 
-
-export type CoffeeProps = {
-    id: number,
-    name: string,
-    description: string,
-    tags: string[],
-    price: number,
-    image: string
-    amount: number
-}
-
-const MIN_VALUE = 0;
+const MIN_VALUE = 0; // A menor quantidade de café possivel
 
 export function Card(coffee: CoffeeProps){
 
     const [amount, setAmount] = useState(0)
+    const {addToCart} = useCart()
 
-    function handleIncrement(){
+    function handleIncrement(){ // Incrementar o contador
         const incrementedValue = amount + 1
         setAmount(incrementedValue)
     }
 
-    function handleDecrement(){
+    function handleDecrement(){ // Decrementar o contador
         const decrementedValue = amount <= MIN_VALUE ? 0 : amount - 1
         setAmount(decrementedValue)
+    }
+
+    function handleAddToCart (){
+        if (amount > 0){
+            addToCart(coffee, amount)
+            console.log(amount)
+            setAmount(MIN_VALUE)
+        }
     }
 
     return (
@@ -51,7 +50,7 @@ export function Card(coffee: CoffeeProps){
                     amount={amount} 
                     handleIncrement={handleIncrement} 
                     handleDecrement={handleDecrement}/>
-                    <ButtonCart disabled={amount === 0}/>
+                    <ButtonCart disabled={amount === 0} handleClick={handleAddToCart}/> 
                 </Actions>
             </CoffeeActions>
         </CardContainer>

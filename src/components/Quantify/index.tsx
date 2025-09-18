@@ -2,7 +2,6 @@ import { Minus, Plus } from "phosphor-react";
 import {QuantifyActions, QuantifyContainer} from './styled'
 
 
-
 interface QuantifyProps {
     amount: number
     handleIncrement: () => void;

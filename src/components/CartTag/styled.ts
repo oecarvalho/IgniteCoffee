@@ -13,19 +13,20 @@ export const CartTagButton = styled.button`
     border: none;
     border-radius: 6px;
     padding: .5rem;
-
+    cursor: pointer;
+    
     span{
-        display: none !important;
+        display: flex;
+        align-items: center !important;
+        justify-content: center;
         position: absolute;
         top: -8px;
         right: -8px;
-        align-items: center;
-        justify-content: center;
         width: 20px;
         height: 20px;
-        background-color: ${props => props.theme['yellow-dark']};
-        border-radius: 100%;
-        color: ${props => props.theme['white']};
+        background-color: ${props => props.theme['yellow-dark']} !important;
+        border-radius: 100px !important;
+        color: ${props => props.theme['white']} !important;
     }
 `
 
