@@ -14,11 +14,10 @@ export function Header(){
                 <img src={Logo} alt="" />        
             </Link>
 
-
             <div>
                 <span>
                     <MapPin size={24} weight='fill' color='#8047F8'/>
-                    Porto Alegre, RS
+                    Brasil, BR
                 </span>
                 <Link to='/checkout'>
                     <CartTag/>
