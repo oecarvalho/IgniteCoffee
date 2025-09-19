@@ -8,6 +8,7 @@ import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 import { ErrorMessage } from "@hookform/error-message";
+import { useCart } from "../../contexts/CartContext";
 
 const CheckoutValidationSchema = zod.object({
     cep: zod.string().min(1, 'Informe o CEP').max(8),
@@ -21,6 +22,11 @@ const CheckoutValidationSchema = zod.object({
 
 export function Checkout() {
 
+    const {cart, totalPrice} = useCart()
+
+    console.log('CONTEXTO CHECKOUT ')
+    console.log(cart)
+
     const { register, handleSubmit, formState } = useForm({
         resolver: zodResolver(CheckoutValidationSchema)
     });
@@ -30,6 +36,13 @@ export function Checkout() {
     }
 
     console.log(formState.errors)
+
+    function formatPrice(price: number){
+        return price.toLocaleString('pt-BR', {
+            maximumFractionDigits: 2,
+            minimumFractionDigits: 2,
+        })
+    }
 
     return (
         <CheckoutContainer>
@@ -133,14 +146,21 @@ export function Checkout() {
                     <h3>Cafés selecionados</h3>
 
                     <CoffeeSelected>
-                        <CardCart/>
-                        <CardCart/>
-                        <CardCart/>
-
+                        {cart.map(coffee => 
+                            <CardCart
+                                key={coffee.id}
+                                id={coffee.id}
+                                amount={coffee.amount}
+                                imgCoffee={coffee.image}
+                                title={coffee.name}
+                                price={(coffee.price * coffee.amount).toFixed(2)}
+                            />
+                        )}
+                        
                         <CoffeeInfoPayment>
                             <CoffeeInfo>
                                 <span>Total de Itens</span>
-                                <p>R$ 29,70</p>
+                                <p>R$ {formatPrice(totalPrice)}</p>
                             </CoffeeInfo>
 
                             <CoffeeInfo>
@@ -150,7 +170,7 @@ export function Checkout() {
 
                             <CoffeeInfo>
                                 <h2>Total</h2>
-                                <h2>R$ 33,20</h2>
+                                <h2>R$ {formatPrice(totalPrice + 3.50)}</h2>
                             </CoffeeInfo>
 
                             <ButtonLabel />

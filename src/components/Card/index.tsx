@@ -7,7 +7,7 @@ import { useCart, type CoffeeProps } from "../../contexts/CartContext";
 const MIN_VALUE = 0; // A menor quantidade de café possivel
 
 export function Card(coffee: CoffeeProps){
-
+    
     const [amount, setAmount] = useState(0)
     const {addToCart} = useCart()
 
