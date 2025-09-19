@@ -9,6 +9,7 @@ export type CoffeeProps = {
     price: number,
     image: string,
     amount: number,
+    
 }
 
 type CartItem = CoffeeProps
@@ -21,6 +22,7 @@ interface CartContextType {
     totalPrice: number //preço total de cada elemento
     changeCartItemQuantity: (cartItemId: number, type: 'increment' | 'decrement') => void
     removeCartItem: (cartItemId: number) => void
+    cleanCart: () => void
 }
 //criando contexto do tipo CartContext
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -51,11 +53,6 @@ export function CartProvider({children}: {children: ReactNode}){
         return total + (item.price * item.amount)
     }, 0)
 
-    //mostra um log contendo a lista de cafés
-    useEffect(() => {
-        console.log("🛒 ESTADO ATUALIZADO DO CARRINHO:", cart);
-    }, [cart]);
-
     function changeCartItemQuantity(cartItemId: number, type: 'increment' | 'decrement'){
         setCart((state) => {
             const newCart = state.map((item)=>{
@@ -73,6 +70,10 @@ export function CartProvider({children}: {children: ReactNode}){
         setCart(state => state.filter(item => item.id !== cartItemId))
     }
 
+    function cleanCart() {
+        setCart([]);
+    }
+
     //retorna um contexto contendo o carringo, a função de add ao carinho e a quantidade total
     return <CartContext.Provider value={{
         cart, 
@@ -80,7 +81,8 @@ export function CartProvider({children}: {children: ReactNode}){
         totalQuantity, 
         totalPrice,
         changeCartItemQuantity,
-        removeCartItem
+        removeCartItem,
+        cleanCart
         }}>{children}</CartContext.Provider>
 }
 

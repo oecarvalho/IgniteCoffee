@@ -2,8 +2,19 @@ import { DeliveryContainer, DeliveryContent, DeliveryInfo, DeliveryTitle, Infos,
 import DeliveryImg from '../../assets/img/Illustration.png'
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 import { BenefictsIcon } from "../../components/Beneficts/BenefictsIcon";
+import { useLocation, useNavigate } from "react-router-dom";
+
+const paymentMethodLabels = {
+    credit: 'Cartão de Crédito',
+    debit: 'Cartão de Débito',
+    money: 'Dinheiro',
+};
 
 export function Delivery(){
+
+    const { state } = useLocation();
+    const navigate = useNavigate();
+
     return(
        <DeliveryContainer>
         <DeliveryContent>
@@ -18,7 +29,7 @@ export function Delivery(){
                         <MapPin size={16} weight="fill"/>
                     </BenefictsIcon>
                     <Info>
-                        <p>Entrega em <span>Rua João Daniel Martinelli, 102</span> Farrapos - Porto Alegre, RS</p>
+                        <p>Entrega em <span>{state.address.rua}, {state.address.numero}</span> {state.address.bairro} - {state.address.cidade}, {state.address.uf.toUpperCase()}</p>
                     </Info>
                 </Infos>
                 <Infos>
@@ -37,7 +48,7 @@ export function Delivery(){
                     
                     <Info>
                         <p>Pagamento na Entrega</p>
-                        <span>Cartão de Crédito</span>
+                        <span>{paymentMethodLabels[state.paymentMethod]}</span>
                     </Info>
                 </Infos>
             </DeliveryInfo>

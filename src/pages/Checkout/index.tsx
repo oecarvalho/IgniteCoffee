@@ -1,4 +1,4 @@
-import { CurrencyDollar, MapPinLine } from "phosphor-react";
+import { CurrencyDollar, MapPinLine,CreditCard, Bank, Money  } from "phosphor-react";
 import { CheckoutAdressForm, CheckoutContainer, CheckoutForm, CheckoutFormContainer, CheckoutInfo, CheckoutMethod, CheckoutPayment, CoffeeInfo, CoffeeInfoPayment, CoffeeSelected, CoffeeSelectedContainer, FormItem, Input } from "./styles";
 import { SelectFormPayment } from "../../components/Select";
 import { CardCart } from "./CardCart";
@@ -9,33 +9,50 @@ import {zodResolver} from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 import { ErrorMessage } from "@hookform/error-message";
 import { useCart } from "../../contexts/CartContext";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const CheckoutValidationSchema = zod.object({
     cep: zod.string().min(1, 'Informe o CEP').max(8),
     rua: zod.string().min(1, "Digite o nome da sua rua"),
     numero: zod.string().min(1, 'Digite o número').max(5),
-    complemento: zod.string().min(1, 'Digite o complemento'),
+    complemento: zod.string().optional(),
     bairro: zod.string().min(1, 'Informe o seu bairro'),
     cidade: zod.string().min(1, 'Informe a sua cidade'),
     uf: zod.string().min(1, 'Informe sua UF').max(2)
 })
 
+const formatPayment = [
+    {
+        name: "credit",
+        icon: CreditCard,
+        label: 'Cartão de Crédito'
+    },
+    {
+        name: "debit",
+        icon: Bank,
+        label: 'Cartão de Débito'
+    },
+    {
+        name: "money",
+        icon: Money,
+        label: 'Dinheiro ou Pix'
+    },
+
+]
+
+type CheckoutFormData = zod.infer<typeof CheckoutValidationSchema>;
+
 export function Checkout() {
 
-    const {cart, totalPrice} = useCart()
-
-    console.log('CONTEXTO CHECKOUT ')
-    console.log(cart)
+    const {cart, totalPrice, cleanCart} = useCart()
+    const DELIVERY_FEE = 3.50;
+    const grandTotal = totalPrice + DELIVERY_FEE;
 
     const { register, handleSubmit, formState } = useForm({
         resolver: zodResolver(CheckoutValidationSchema)
     });
 
-    function handleSendForm(data:any){
-        console.log(data)
-    }
-
-    console.log(formState.errors)
 
     function formatPrice(price: number){
         return price.toLocaleString('pt-BR', {
@@ -44,6 +61,30 @@ export function Checkout() {
         })
     }
 
+    const [paymentMethod, setPaymentMethod] = useState('');
+    const navigate = useNavigate();
+
+    function handleSendForm(data: CheckoutFormData) {
+        if (cart.length === 0) {
+            return alert('Seu carrinho está vazio. Adicione itens antes de continuar.');
+        }
+        if (!paymentMethod) {
+            return alert('Por favor, selecione um método de pagamento.');
+        }
+
+        const order = {
+            address: data,
+            paymentMethod: paymentMethod,
+            items: cart,
+            total: grandTotal,
+        };
+
+        console.log("order: ", order)
+
+        navigate('/delivery', { state: order });
+        cleanCart(); 
+    }
+    
     return (
         <CheckoutContainer>
             <form action="" onSubmit={handleSubmit(handleSendForm)}>
@@ -135,9 +176,15 @@ export function Checkout() {
                         </CheckoutInfo>
 
                         <CheckoutMethod>
-                            <SelectFormPayment isSelected={true}/>
-                            <SelectFormPayment isSelected={false}/>
-                            <SelectFormPayment isSelected={false}/>
+                            {formatPayment.map(option => (
+                                <SelectFormPayment
+                                    key={option.name}
+                                    label={option.label}
+                                    icon={option.icon}
+                                    isSelected={paymentMethod === option.name}
+                                    onClick={() => setPaymentMethod(option.name)}
+                                />
+                             ))}
                         </CheckoutMethod>
                     </CheckoutPayment>
                 </CheckoutFormContainer>
@@ -164,7 +211,7 @@ export function Checkout() {
                             </CoffeeInfo>
 
                             <CoffeeInfo>
-                                <span>Entrega</span>
+                                <span>Entrega padrão</span>
                                 <p>R$ 3,50</p>
                             </CoffeeInfo>
 
@@ -180,4 +227,8 @@ export function Checkout() {
             </form>
         </CheckoutContainer>
     )
+}
+
+function cleanCart() {
+    throw new Error("Function not implemented.");
 }

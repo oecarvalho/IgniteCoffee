@@ -1,27 +1,21 @@
 import styled from "styled-components";
 
-
-export const PaymentContainer = styled.label`
-    width: auto;
+export const PaymentContainer = styled.button`
     max-width: 190px;
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 1rem;
+    padding: 12px;
     background-color: ${props => props.theme['base-button']};
     border-radius: 6px;
     cursor: pointer;
+    border: none;
 
     span{
-        p{
-            font-size: 12px;
-            line-height: 160%;
-            text-transform: uppercase;
-        }
-    }
-
-    input[type='radio']{
-        display: none;
+        
+        font-size: 12px !important;
+        line-height: 160%;
+        text-transform: uppercase;
     }
 
     &:hover{

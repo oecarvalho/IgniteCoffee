@@ -1,22 +1,19 @@
-import { CreditCard } from "phosphor-react";
 import { PaymentContainer } from "./styles";
-import type { InputHTMLAttributes } from "react";
+import type { ButtonHTMLAttributes, ElementType } from "react";
 
-type Props = InputHTMLAttributes<HTMLInputElement> & {
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
     isSelected: boolean;
-    // label: string
+    label: string
+    icon: ElementType
 }
 
-const TypePayment = [
-    
-]
 
-export function SelectFormPayment({isSelected, ...rest}: Props){
+
+export function SelectFormPayment({isSelected, label, icon: Icon, ...rest}: Props){
     return(
-        <PaymentContainer data-state={isSelected}>
-            <input type="radio" name="PaymentMethod" {...rest}/>
-                <CreditCard size={24} color="#8a2be2"/>
-                <span><p>Cartão de Crédito</p></span>
+        <PaymentContainer data-state={isSelected} type='button' {...rest}>
+            <Icon size={24} color="#8a2be2"/>
+            <span>{label}</span>
         </PaymentContainer>
     )
 }
